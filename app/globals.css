@@ -1,38 +1,43 @@
 @import "tailwindcss";
 
-/* Palette echoes her resume PDF (plum + gold) so the two read as one brand. */
+/* "Trust Blue" — a clinical, calm palette suited to healthcare/insurance
+   work, replacing the earlier plum/gold. Neutrals carry a cool blue-grey
+   tint instead of the old warm rose tint so they read as one family with
+   the navy brand color, not leftovers from the previous palette. */
 @theme {
-  --color-canvas: #fdfaf8;
-  --color-canvas-alt: #f7efec;
+  --color-canvas: #f8fafb;
+  --color-canvas-alt: #eef3f6;
   --color-surface: #ffffff;
-  --color-line: #ece0dc;
-  --color-line-strong: #dcc9c3;
+  --color-line: #dbe4ea;
+  --color-line-strong: #c2d2dc;
 
   /* All three clear WCAG AA (4.5:1) on canvas, surface and canvas-alt —
      the micro-labels run at 11px, so the subtle tone cannot go lighter. */
-  --color-ink: #2f2429;
-  --color-ink-muted: #5f5258;
-  --color-ink-subtle: #7a686f;
+  --color-ink: #202a30;
+  --color-ink-muted: #4c5b64;
+  --color-ink-subtle: #5c6b75;
 
-  --color-brand: #7a2e48;
-  --color-brand-hover: #63243a;
-  --color-brand-soft: #f6ebef;
-  --color-gold: #a9793f;
+  --color-brand: #1b4965;
+  --color-brand-hover: #123449;
+  --color-brand-soft: #e7f0f5;
+  --color-gold: #4a90b8;
 
   --color-good: #10714f;
   --color-warn: #96610c;
   --color-bad: #a82f2f;
 
-  /* Secondary accent — deep teal, distinct from the plum/gold brand pair.
-     Used for one dark panel per section, echoing a dark-card-with-accent-
-     text pattern without reusing the reference image's maroon/gold. */
-  --color-teal: #0e6f64;
-  --color-teal-panel: #0b3d38;
-  --color-teal-panel-soft: #123f3a;
-  --color-teal-line: #1c554e;
-  --color-on-panel: #f4ece1;
-  --color-on-panel-muted: #c9bdae;
-  --color-teal-accent: #7fd8c4;
+  /* Secondary accent — a darker navy panel than the brand color itself,
+     for the one dark card per section (Hero ticker, Systems callout,
+     Experience's current role, Contact's direct line). Named --teal-*
+     from an earlier palette iteration; still holds the meaning "dark
+     panel accent," just re-valued to the blue family below. */
+  --color-teal: #2e6e93;
+  --color-teal-panel: #0b2436;
+  --color-teal-panel-soft: #123249;
+  --color-teal-line: #1f4a63;
+  --color-on-panel: #eaf3f8;
+  --color-on-panel-muted: #b7d3e0;
+  --color-teal-accent: #7ec8e3;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, "SF Mono", Menlo, monospace;
