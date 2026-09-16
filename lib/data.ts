@@ -175,8 +175,36 @@ export const credentials = [
   { label: "College Graduate", detail: "University of Southern Philippines" },
 ] as const;
 
+export const faqs = [
+  {
+    question: "When can she start?",
+    answer: "Immediately. She's not currently employed elsewhere and can begin onboarding as soon as an offer is made.",
+  },
+  {
+    question: "Does she work U.S. business hours?",
+    answer: "Yes. She's based in Davao City, Philippines, and works aligned to U.S. business hours — including overlap with Eastern and Pacific time practices.",
+  },
+  {
+    question: "Is she HIPAA certified?",
+    answer: "Yes, HIPAA certified through Saiber. She's handled patient eligibility, benefits, and claims data under that certification for 7+ years.",
+  },
+  {
+    question: "Which insurance portals and EHR systems has she used?",
+    answer: "Availity and the UHC provider portal for eligibility and claims, plus IMS for patient charting and scheduling. Full list is in the Systems section above.",
+  },
+  {
+    question: "Has she done more than scheduling — eligibility, prior auth, claims?",
+    answer: "Yes. At Truelife Hospital she handled the full cycle: eligibility verification, prior authorizations, ICD-10/CPT coding, and claims finalization — not just appointment booking.",
+  },
+  {
+    question: "Is her HIPAA training and insurance-verification experience current?",
+    answer: "Her healthcare operations role ran through June 2024, and she's remained active in a client-facing role since. Happy to walk through specifics on a call.",
+  },
+] as const;
+
 export const navLinks = [
   { href: "#systems", label: "Systems" },
   { href: "#experience", label: "Experience" },
+  { href: "#faq", label: "FAQ" },
   { href: "#contact", label: "Contact" },
 ] as const;

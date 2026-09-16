@@ -1,5 +1,6 @@
 import { ContactSection } from "@/components/ContactSection";
 import { ExperienceSection } from "@/components/ExperienceSection";
+import { FaqSection } from "@/components/FaqSection";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { SystemsMatrix } from "@/components/SystemsMatrix";
@@ -55,6 +56,15 @@ export default function Page() {
           description="Seven of them supporting U.S. healthcare providers, with claims and customer service before that."
         >
           <ExperienceSection />
+        </Section>
+
+        <Section
+          id="faq"
+          eyebrow="FAQ"
+          title="Questions recruiters usually ask"
+          description="Straight answers before you have to email to get them."
+        >
+          <FaqSection />
         </Section>
 
         <Section
