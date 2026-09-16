@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+@theme {
+  --color-accent: #22d3ee;
+  --color-accent-dim: #0e7490;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-slate-950);
+    color: var(--color-slate-100);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklch, var(--color-accent) 30%, transparent);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+}
+
+/* Effects live in the components layer so Tailwind utilities still win —
+   an unlayered `position: relative` here would override `fixed` on a consumer. */
+@layer components {
+  /* Aceternity-style Card Spotlight: radial glow tracks the cursor.
+     Coordinates come from a mousemove handler writing --mx / --my. */
+  .spotlight {
+    position: relative;
+    isolation: isolate;
+  }
+  .spotlight::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    background: radial-gradient(
+      420px circle at var(--mx, 50%) var(--my, 50%),
+      color-mix(in oklch, var(--color-accent) 16%, transparent),
+      transparent 70%
+    );
+    z-index: -1;
+  }
+  .spotlight:hover::before {
+    opacity: 1;
+  }
+
+  /* Magic UI-style Border Beam: a single lit arc travelling the border. */
+  .border-beam {
+    position: relative;
+  }
+  .border-beam::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(
+      from var(--angle),
+      transparent 0%,
+      transparent 82%,
+      var(--color-accent) 92%,
+      #a5f3fc 96%,
+      transparent 100%
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: beam-spin 6s linear infinite;
+    pointer-events: none;
+  }
+
+  /* Magic UI-style Animated Shiny Button: a highlight sweeping across the face. */
+  .shiny {
+    position: relative;
+    overflow: hidden;
+  }
+  .shiny::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      110deg,
+      transparent 25%,
+      color-mix(in oklch, #fff 22%, transparent) 48%,
+      transparent 60%
+    );
+    transform: translateX(-100%);
+    animation: shine 4.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+}
+
+/* @property and @keyframes stay unlayered — they are not cascade participants. */
+@property --angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes beam-spin {
+  to {
+    --angle: 360deg;
+  }
+}
+
+@keyframes shine {
+  0%,
+  55% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .border-beam::after,
+  .shiny::after {
+    animation: none;
+  }
+  .shiny::after {
+    opacity: 0;
+  }
+}
