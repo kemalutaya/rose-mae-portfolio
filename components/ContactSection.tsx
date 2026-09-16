@@ -16,19 +16,38 @@ function LinkedinIcon({ className }: { className?: string }) {
   );
 }
 
+type SendState = "idle" | "copied-and-opening" | "copy-failed-opening";
+
 export function ContactSection() {
   const [message, setMessage] = useState("");
   const [from, setFrom] = useState("");
+  const [sendState, setSendState] = useState<SendState>("idle");
   const [copied, setCopied] = useState<boolean | null>(null);
 
   const ready = from.trim() !== "" && message.trim() !== "";
 
+  const draft = `To: ${profile.email}\nSubject: Role enquiry via portfolio\n\n${message}\n\n— ${from}`;
   const mailto = `mailto:${profile.email}?subject=${encodeURIComponent(
     "Role enquiry via portfolio",
   )}&body=${encodeURIComponent(`${message}\n\n— ${from}`)}`;
 
+  async function openEmailApp() {
+    // mailto: silently no-ops when no mail client is registered, with no
+    // error to catch and no reliable way to detect the failure after the
+    // fact (a deferred check loses the click's transient user-activation,
+    // which breaks clipboard writes too). So the draft is copied
+    // synchronously, inside the click itself, every time — a guaranteed
+    // fallback rather than one detected after guessing mailto failed.
+    try {
+      await navigator.clipboard.writeText(draft);
+      setSendState("copied-and-opening");
+    } catch {
+      setSendState("copy-failed-opening");
+    }
+    window.location.href = mailto;
+  }
+
   async function copyDraft() {
-    const draft = `To: ${profile.email}\nSubject: Role enquiry via portfolio\n\n${message}\n\n— ${from}`;
     try {
       await navigator.clipboard.writeText(draft);
       setCopied(true);
@@ -122,11 +141,9 @@ export function ContactSection() {
         className="flex flex-col gap-3 rounded-xl border border-line bg-surface p-5"
         onSubmit={(e) => {
           e.preventDefault();
-          window.location.href = mailto;
+          openEmailApp();
         }}
       >
-        {/* mailto silently does nothing when no mail client is registered,
-            so the copy path is offered alongside it rather than as a rescue. */}
         <label
           htmlFor="contact-from"
           className="text-[11px] tracking-wider text-ink-subtle uppercase"
@@ -159,7 +176,12 @@ export function ContactSection() {
         />
 
         <div className="mt-2 flex flex-wrap items-center gap-2">
-          <Button type="submit">Open in email app</Button>
+          <Button type="submit">
+            {sendState !== "idle" ? (
+              <Check className="size-4" aria-hidden />
+            ) : null}
+            Open in email app
+          </Button>
           <Button
             type="button"
             variant="outline"
@@ -176,11 +198,15 @@ export function ContactSection() {
         </div>
 
         <p aria-live="polite" className="text-xs text-ink-subtle">
-          {copied === true
-            ? `Message copied. Send it to ${profile.email} from wherever you read email.`
-            : copied === false
-              ? `Copy failed — email ${profile.email} directly.`
-              : `Opens your mail app. No mail app? Copy the message and send it to ${profile.email}.`}
+          {sendState === "copied-and-opening"
+            ? `Message copied and your mail app should be opening. If it doesn't, paste the message into an email to ${profile.email}.`
+            : sendState === "copy-failed-opening"
+              ? `Your mail app should be opening. If it doesn't, email ${profile.email} directly.`
+              : copied === true
+                ? `Message copied. Send it to ${profile.email} from wherever you read email.`
+                : copied === false
+                  ? `Copy failed — email ${profile.email} directly.`
+                  : `Copies the message and opens your mail app. No mail app? The message is already copied.`}
         </p>
       </form>
       </div>
