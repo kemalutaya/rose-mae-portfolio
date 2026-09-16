@@ -177,7 +177,6 @@ export const credentials = [
 
 export const navLinks = [
   { href: "#systems", label: "Systems" },
-  { href: "#workflows", label: "Workflows" },
   { href: "#experience", label: "Experience" },
   { href: "#contact", label: "Contact" },
 ] as const;

@@ -2,9 +2,7 @@ import { ContactSection } from "@/components/ContactSection";
 import { ExperienceSection } from "@/components/ExperienceSection";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { RecruiterChat } from "@/components/RecruiterChat";
 import { SystemsMatrix } from "@/components/SystemsMatrix";
-import { VerificationDemo } from "@/components/VerificationDemo";
 import { profile } from "@/lib/data";
 
 function Section({
@@ -51,15 +49,6 @@ export default function Page() {
         </Section>
 
         <Section
-          id="workflows"
-          eyebrow="Workflows"
-          title="How the day-to-day work actually runs"
-          description="Two everyday tasks, shown end to end: verifying a morning's eligibility queue, and auditing a chart before the provider walks in. Both are interactive — click through them."
-        >
-          <VerificationDemo />
-        </Section>
-
-        <Section
           id="experience"
           eyebrow="Experience"
           title="Fifteen years of healthcare and support work"
@@ -83,8 +72,6 @@ export default function Page() {
           {profile.name} · {profile.location} · {profile.phone}
         </div>
       </footer>
-
-      <RecruiterChat />
     </>
   );
 }

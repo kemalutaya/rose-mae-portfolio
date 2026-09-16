@@ -1,17 +1,11 @@
-"use client";
-
-import { Download, Sparkles } from "lucide-react";
+import { Download } from "lucide-react";
 import { navLinks, profile } from "@/lib/data";
-import { openRecruiterChat } from "@/lib/chat-events";
 
 export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-canvas/85 backdrop-blur-md">
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center gap-4 px-4 sm:px-6">
-        <a
-          href="#top"
-          className="text-sm font-semibold tracking-tight text-ink"
-        >
+        <a href="#top" className="text-sm font-semibold tracking-tight text-ink">
           {profile.name.replace(" M.", "")}
         </a>
 
@@ -25,14 +19,6 @@ export function Header() {
               {link.label}
             </a>
           ))}
-          <button
-            type="button"
-            onClick={openRecruiterChat}
-            className="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm text-ink-muted transition-colors hover:bg-canvas-alt hover:text-ink"
-          >
-            <Sparkles className="size-3.5" aria-hidden />
-            AI Assistant
-          </button>
         </nav>
 
         <a

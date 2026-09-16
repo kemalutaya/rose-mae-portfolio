@@ -78,33 +78,6 @@
     opacity: 1;
   }
 
-  /* Magic UI-style Border Beam: a single lit arc travelling the border. */
-  .border-beam {
-    position: relative;
-  }
-  .border-beam::after {
-    content: "";
-    position: absolute;
-    inset: -1px;
-    border-radius: inherit;
-    padding: 1px;
-    background: conic-gradient(
-      from var(--angle),
-      transparent 0%,
-      transparent 82%,
-      var(--color-brand) 92%,
-      var(--color-gold) 96%,
-      transparent 100%
-    );
-    -webkit-mask:
-      linear-gradient(#000 0 0) content-box,
-      linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    animation: beam-spin 6s linear infinite;
-    pointer-events: none;
-  }
-
   /* Magic UI-style Animated Shiny Button: a highlight sweeping across the face. */
   .shiny {
     position: relative;
@@ -126,19 +99,7 @@
   }
 }
 
-/* @property and @keyframes stay unlayered — they are not cascade participants. */
-@property --angle {
-  syntax: "<angle>";
-  inherits: false;
-  initial-value: 0deg;
-}
-
-@keyframes beam-spin {
-  to {
-    --angle: 360deg;
-  }
-}
-
+/* @keyframes stays unlayered — it is not a cascade participant. */
 @keyframes shine {
   0%,
   55% {
@@ -153,11 +114,8 @@
   html {
     scroll-behavior: auto;
   }
-  .border-beam::after,
   .shiny::after {
     animation: none;
-  }
-  .shiny::after {
     opacity: 0;
   }
 }
