@@ -1,9 +1,9 @@
 import { ContactSection } from "@/components/ContactSection";
 import { ExperienceSection } from "@/components/ExperienceSection";
-import { FaqSection } from "@/components/FaqSection";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { SystemsMatrix } from "@/components/SystemsMatrix";
+import { ScrollProgress } from "@/components/motion-primitives/scroll-progress";
 import { profile } from "@/lib/data";
 
 function Section({
@@ -36,6 +36,7 @@ function Section({
 export default function Page() {
   return (
     <>
+      <ScrollProgress className="fixed inset-x-0 top-0 z-50 bg-teal-accent" />
       <Header />
       <main className="flex-1 divide-y divide-line">
         <Hero />
@@ -56,15 +57,6 @@ export default function Page() {
           description="Seven of them supporting U.S. healthcare providers, with claims and customer service before that."
         >
           <ExperienceSection />
-        </Section>
-
-        <Section
-          id="faq"
-          eyebrow="FAQ"
-          title="Questions recruiters usually ask"
-          description="Straight answers before you have to email to get them."
-        >
-          <FaqSection />
         </Section>
 
         <Section

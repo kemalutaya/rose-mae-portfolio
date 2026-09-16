@@ -23,6 +23,17 @@
   --color-warn: #96610c;
   --color-bad: #a82f2f;
 
+  /* Secondary accent — deep teal, distinct from the plum/gold brand pair.
+     Used for one dark panel per section, echoing a dark-card-with-accent-
+     text pattern without reusing the reference image's maroon/gold. */
+  --color-teal: #0e6f64;
+  --color-teal-panel: #0b3d38;
+  --color-teal-panel-soft: #123f3a;
+  --color-teal-line: #1c554e;
+  --color-on-panel: #f4ece1;
+  --color-on-panel-muted: #c9bdae;
+  --color-teal-accent: #7fd8c4;
+
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, "SF Mono", Menlo, monospace;
 }
@@ -55,29 +66,6 @@
 /* Effects live in the components layer so Tailwind utilities still win —
    an unlayered `position: relative` here would override `fixed` on a consumer. */
 @layer components {
-  /* Aceternity-style Card Spotlight: radial glow tracks the cursor. */
-  .spotlight {
-    position: relative;
-    isolation: isolate;
-  }
-  .spotlight::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    opacity: 0;
-    transition: opacity 0.35s ease;
-    background: radial-gradient(
-      420px circle at var(--mx, 50%) var(--my, 50%),
-      color-mix(in oklch, var(--color-brand) 9%, transparent),
-      transparent 70%
-    );
-    z-index: -1;
-  }
-  .spotlight:hover::before {
-    opacity: 1;
-  }
-
   /* Magic UI-style Animated Shiny Button: a highlight sweeping across the face. */
   .shiny {
     position: relative;

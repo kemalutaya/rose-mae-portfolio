@@ -2,6 +2,8 @@
 
 import { Check, Copy, Mail, MapPin } from "lucide-react";
 import { useState } from "react";
+import { AnimatedGroup } from "@/components/motion-primitives/animated-group";
+import { DarkPanel } from "@/components/DarkPanel";
 import { Button } from "@/components/ui/button";
 import { credentials, profile } from "@/lib/data";
 
@@ -36,8 +38,29 @@ export function ContactSection() {
   }
 
   return (
-    <div className="grid gap-8 md:grid-cols-2">
-      <div className="space-y-4">
+    <div className="flex flex-col gap-8">
+      <DarkPanel>
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <p className="text-[11px] tracking-wider text-teal-accent uppercase">
+              Direct Line
+            </p>
+            <h3 className="mt-2 text-lg font-semibold text-on-panel">
+              Immediately available — no notice period to work around.
+            </h3>
+          </div>
+          <span className="flex items-center gap-2 rounded-full border border-teal-line bg-teal-panel-soft px-3 py-1.5 text-xs text-on-panel-muted">
+            <span className="relative flex size-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-accent opacity-75" />
+              <span className="relative inline-flex size-2 rounded-full bg-teal-accent" />
+            </span>
+            Open to offers
+          </span>
+        </div>
+      </DarkPanel>
+
+      <div className="grid gap-8 md:grid-cols-2">
+      <AnimatedGroup preset="slide" className="space-y-4">
         <a
           href={`mailto:${profile.email}`}
           className="flex items-center gap-3 rounded-xl border border-line bg-surface p-4 transition-colors hover:border-line-strong"
@@ -93,7 +116,7 @@ export function ContactSection() {
             ))}
           </ul>
         </div>
-      </div>
+      </AnimatedGroup>
 
       <form
         className="flex flex-col gap-3 rounded-xl border border-line bg-surface p-5"
@@ -160,6 +183,7 @@ export function ContactSection() {
               : `Opens your mail app. No mail app? Copy the message and send it to ${profile.email}.`}
         </p>
       </form>
+      </div>
     </div>
   );
 }
