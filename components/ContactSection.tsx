@@ -27,14 +27,14 @@ export function ContactSection() {
       <div className="space-y-4">
         <a
           href={`mailto:${profile.email}`}
-          className="flex items-center gap-3 rounded-xl border border-slate-800 bg-slate-900/50 p-4 transition-colors hover:border-slate-700"
+          className="flex items-center gap-3 rounded-xl border border-line bg-surface p-4 transition-colors hover:border-line-strong"
         >
-          <Mail className="size-4 shrink-0 text-accent" aria-hidden />
+          <Mail className="size-4 shrink-0 text-brand" aria-hidden />
           <div className="min-w-0">
-            <div className="text-[11px] tracking-wider text-slate-500 uppercase">
+            <div className="text-[11px] tracking-wider text-ink-subtle uppercase">
               Email
             </div>
-            <div className="truncate text-sm text-slate-200">{profile.email}</div>
+            <div className="truncate text-sm text-ink">{profile.email}</div>
           </div>
         </a>
 
@@ -42,40 +42,40 @@ export function ContactSection() {
           href={profile.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-3 rounded-xl border border-slate-800 bg-slate-900/50 p-4 transition-colors hover:border-slate-700"
+          className="flex items-center gap-3 rounded-xl border border-line bg-surface p-4 transition-colors hover:border-line-strong"
         >
-          <LinkedinIcon className="size-4 shrink-0 text-accent" />
+          <LinkedinIcon className="size-4 shrink-0 text-brand" />
           <div className="min-w-0">
-            <div className="text-[11px] tracking-wider text-slate-500 uppercase">
+            <div className="text-[11px] tracking-wider text-ink-subtle uppercase">
               LinkedIn
             </div>
-            <div className="truncate text-sm text-slate-200">
+            <div className="truncate text-sm text-ink">
               {profile.linkedinLabel}
             </div>
           </div>
         </a>
 
-        <div className="flex items-center gap-3 rounded-xl border border-slate-800 bg-slate-900/50 p-4">
-          <MapPin className="size-4 shrink-0 text-accent" aria-hidden />
+        <div className="flex items-center gap-3 rounded-xl border border-line bg-surface p-4">
+          <MapPin className="size-4 shrink-0 text-brand" aria-hidden />
           <div className="min-w-0">
-            <div className="text-[11px] tracking-wider text-slate-500 uppercase">
+            <div className="text-[11px] tracking-wider text-ink-subtle uppercase">
               Location
             </div>
-            <div className="text-sm text-slate-200">
+            <div className="text-sm text-ink">
               {profile.location} · {profile.availability}
             </div>
           </div>
         </div>
 
-        <div className="rounded-xl border border-slate-800 bg-slate-900/50 p-4">
-          <div className="text-[11px] tracking-wider text-slate-500 uppercase">
+        <div className="rounded-xl border border-line bg-surface p-4">
+          <div className="text-[11px] tracking-wider text-ink-subtle uppercase">
             Credentials
           </div>
           <ul className="mt-2 space-y-1">
             {credentials.map((c) => (
-              <li key={c.label} className="text-sm text-slate-200">
+              <li key={c.label} className="text-sm text-ink">
                 {c.label}{" "}
-                <span className="text-slate-500">— {c.detail}</span>
+                <span className="text-ink-subtle">— {c.detail}</span>
               </li>
             ))}
           </ul>
@@ -83,7 +83,7 @@ export function ContactSection() {
       </div>
 
       <form
-        className="flex flex-col gap-3 rounded-xl border border-slate-800 bg-slate-900/50 p-5"
+        className="flex flex-col gap-3 rounded-xl border border-line bg-surface p-5"
         onSubmit={(e) => {
           e.preventDefault();
           window.location.href = mailto;
@@ -91,7 +91,7 @@ export function ContactSection() {
       >
         <label
           htmlFor="contact-from"
-          className="text-[11px] tracking-wider text-slate-500 uppercase"
+          className="text-[11px] tracking-wider text-ink-subtle uppercase"
         >
           Your name and company
         </label>
@@ -101,12 +101,12 @@ export function ContactSection() {
           onChange={(e) => setFrom(e.currentTarget.value)}
           required
           placeholder="Jordan Reyes, Northside Family Practice"
-          className="h-10 rounded-lg border border-slate-800 bg-slate-950 px-3 text-sm text-slate-100 placeholder:text-slate-600"
+          className="h-10 rounded-lg border border-line bg-canvas px-3 text-sm text-ink placeholder:text-ink-subtle"
         />
 
         <label
           htmlFor="contact-message"
-          className="mt-2 text-[11px] tracking-wider text-slate-500 uppercase"
+          className="mt-2 text-[11px] tracking-wider text-ink-subtle uppercase"
         >
           Message
         </label>
@@ -117,13 +117,13 @@ export function ContactSection() {
           required
           rows={6}
           placeholder="We're hiring a remote eligibility and prior-auth specialist…"
-          className="resize-y rounded-lg border border-slate-800 bg-slate-950 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-600"
+          className="resize-y rounded-lg border border-line bg-canvas px-3 py-2 text-sm text-ink placeholder:text-ink-subtle"
         />
 
         <Button type="submit" className="mt-2 self-start">
           Send message
         </Button>
-        <p className="text-xs text-slate-500">
+        <p className="text-xs text-ink-subtle">
           Opens your email client with the message ready to send.
         </p>
       </form>

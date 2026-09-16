@@ -25,13 +25,13 @@ export function SystemsMatrix() {
               {category.tools.map((tool) => (
                 <Card
                   key={tool.name}
-                  className="transition-colors hover:border-slate-700"
+                  className="transition-colors hover:border-line-strong"
                 >
                   <CardHeader>
                     <CardTitle>{tool.name}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm leading-relaxed text-slate-400">
+                    <p className="text-sm leading-relaxed text-ink-muted">
                       {tool.use}
                     </p>
                   </CardContent>

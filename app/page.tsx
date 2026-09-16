@@ -22,11 +22,11 @@ function Section({
 }) {
   return (
     <section id={id} className="mx-auto w-full max-w-6xl scroll-mt-20 px-4 py-14 sm:px-6">
-      <p className="text-[11px] tracking-wider text-accent uppercase">{eyebrow}</p>
-      <h2 className="mt-2 text-2xl font-semibold tracking-tight text-balance text-slate-50">
+      <p className="text-[11px] tracking-wider text-brand uppercase">{eyebrow}</p>
+      <h2 className="mt-2 text-2xl font-semibold tracking-tight text-balance text-ink">
         {title}
       </h2>
-      <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-400">
+      <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-muted">
         {description}
       </p>
       <div className="mt-8">{children}</div>
@@ -38,14 +38,14 @@ export default function Page() {
   return (
     <>
       <Header />
-      <main className="flex-1 divide-y divide-slate-900">
+      <main className="flex-1 divide-y divide-line">
         <Hero />
 
         <Section
           id="systems"
           eyebrow="Systems"
           title="Software and portals, by domain"
-          description="The tools she works in daily, grouped by where they sit in a practice's back office."
+          description="The tools she works in daily, grouped by how a practice uses them."
         >
           <SystemsMatrix />
         </Section>
@@ -53,7 +53,7 @@ export default function Page() {
         <Section
           id="workflows"
           eyebrow="Workflows"
-          title="How the back-office work actually runs"
+          title="How the day-to-day work actually runs"
           description="Two everyday tasks, shown end to end: verifying a morning's eligibility queue, and auditing a chart before the provider walks in. Both are interactive — click through them."
         >
           <VerificationDemo />
@@ -62,8 +62,8 @@ export default function Page() {
         <Section
           id="experience"
           eyebrow="Experience"
-          title="Fifteen years of operations and support"
-          description="Seven of them inside U.S. healthcare back-office work, with claims and customer operations before that."
+          title="Fifteen years of healthcare and support work"
+          description="Seven of them supporting U.S. healthcare providers, with claims and customer service before that."
         >
           <ExperienceSection />
         </Section>
@@ -78,8 +78,8 @@ export default function Page() {
         </Section>
       </main>
 
-      <footer className="border-t border-slate-900 py-8">
-        <div className="mx-auto w-full max-w-6xl px-4 text-xs text-slate-600 sm:px-6">
+      <footer className="border-t border-line py-8">
+        <div className="mx-auto w-full max-w-6xl px-4 text-xs text-ink-subtle sm:px-6">
           {profile.name} · {profile.location} · {profile.phone}
         </div>
       </footer>

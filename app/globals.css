@@ -1,15 +1,35 @@
 @import "tailwindcss";
 
+/* Palette echoes her resume PDF (plum + gold) so the two read as one brand. */
 @theme {
-  --color-accent: #22d3ee;
-  --color-accent-dim: #0e7490;
+  --color-canvas: #fdfaf8;
+  --color-canvas-alt: #f7efec;
+  --color-surface: #ffffff;
+  --color-line: #ece0dc;
+  --color-line-strong: #dcc9c3;
+
+  /* All three clear WCAG AA (4.5:1) on canvas, surface and canvas-alt —
+     the micro-labels run at 11px, so the subtle tone cannot go lighter. */
+  --color-ink: #2f2429;
+  --color-ink-muted: #5f5258;
+  --color-ink-subtle: #7a686f;
+
+  --color-brand: #7a2e48;
+  --color-brand-hover: #63243a;
+  --color-brand-soft: #f6ebef;
+  --color-gold: #a9793f;
+
+  --color-good: #10714f;
+  --color-warn: #96610c;
+  --color-bad: #a82f2f;
+
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, "SF Mono", Menlo, monospace;
 }
 
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   html {
@@ -17,18 +37,17 @@
   }
 
   body {
-    background-color: var(--color-slate-950);
-    color: var(--color-slate-100);
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
     -webkit-font-smoothing: antialiased;
   }
 
   ::selection {
-    background-color: color-mix(in oklch, var(--color-accent) 30%, transparent);
-    color: #fff;
+    background-color: color-mix(in oklch, var(--color-brand) 18%, transparent);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--color-brand);
     outline-offset: 2px;
   }
 }
@@ -36,8 +55,7 @@
 /* Effects live in the components layer so Tailwind utilities still win —
    an unlayered `position: relative` here would override `fixed` on a consumer. */
 @layer components {
-  /* Aceternity-style Card Spotlight: radial glow tracks the cursor.
-     Coordinates come from a mousemove handler writing --mx / --my. */
+  /* Aceternity-style Card Spotlight: radial glow tracks the cursor. */
   .spotlight {
     position: relative;
     isolation: isolate;
@@ -51,7 +69,7 @@
     transition: opacity 0.35s ease;
     background: radial-gradient(
       420px circle at var(--mx, 50%) var(--my, 50%),
-      color-mix(in oklch, var(--color-accent) 16%, transparent),
+      color-mix(in oklch, var(--color-brand) 9%, transparent),
       transparent 70%
     );
     z-index: -1;
@@ -74,8 +92,8 @@
       from var(--angle),
       transparent 0%,
       transparent 82%,
-      var(--color-accent) 92%,
-      #a5f3fc 96%,
+      var(--color-brand) 92%,
+      var(--color-gold) 96%,
       transparent 100%
     );
     -webkit-mask:
@@ -99,7 +117,7 @@
     background: linear-gradient(
       110deg,
       transparent 25%,
-      color-mix(in oklch, #fff 22%, transparent) 48%,
+      color-mix(in oklch, #fff 38%, transparent) 48%,
       transparent 60%
     );
     transform: translateX(-100%);

@@ -53,7 +53,7 @@ export function RecruiterChat() {
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-label={open ? "Close AI assistant" : "Open AI assistant"}
-        className="fixed right-4 bottom-4 z-50 inline-flex size-12 items-center justify-center rounded-full bg-accent text-slate-950 shadow-lg shadow-cyan-500/20 transition-transform hover:scale-105 sm:right-6 sm:bottom-6"
+        className="fixed right-4 bottom-4 z-50 inline-flex size-12 items-center justify-center rounded-full bg-brand text-white shadow-lg shadow-brand/20 transition-transform hover:scale-105 sm:right-6 sm:bottom-6"
       >
         {open ? (
           <X className="size-5" aria-hidden />
@@ -66,11 +66,11 @@ export function RecruiterChat() {
         <div
           role="dialog"
           aria-label="AI recruiter assistant"
-          className="border-beam fixed right-4 bottom-20 z-50 flex max-h-[min(34rem,calc(100dvh-7rem))] w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-xl border border-slate-800 bg-slate-900 shadow-2xl sm:right-6 sm:bottom-24 sm:w-96"
+          className="border-beam fixed right-4 bottom-20 z-50 flex max-h-[min(34rem,calc(100dvh-7rem))] w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-xl border border-line bg-surface shadow-2xl sm:right-6 sm:bottom-24 sm:w-96"
         >
-          <div className="flex items-center gap-2 border-b border-slate-800 px-4 py-3">
-            <Sparkles className="size-4 text-accent" aria-hidden />
-            <span className="text-sm font-semibold text-slate-100">
+          <div className="flex items-center gap-2 border-b border-line px-4 py-3">
+            <Sparkles className="size-4 text-brand" aria-hidden />
+            <span className="text-sm font-semibold text-ink">
               Ask about Rose Mae
             </span>
           </div>
@@ -79,8 +79,9 @@ export function RecruiterChat() {
             {messages.length === 0 && (
               <>
                 <Bubble role="assistant">
-                  Ask me anything about Rose Mae&apos;s healthcare operations
-                  experience, certifications, or the systems she has worked in.
+                  Ask me anything about Rose Mae&apos;s experience as a medical
+                  virtual assistant, her certifications, or the systems she has
+                  worked in.
                 </Bubble>
                 <div className="flex flex-col gap-1.5 pt-1">
                   {SUGGESTIONS.map((s) => (
@@ -88,7 +89,7 @@ export function RecruiterChat() {
                       key={s}
                       type="button"
                       onClick={() => submit(s)}
-                      className="rounded-lg border border-slate-800 px-3 py-2 text-left text-xs text-slate-400 transition-colors hover:border-slate-600 hover:text-slate-200"
+                      className="rounded-lg border border-line px-3 py-2 text-left text-xs text-ink-muted transition-colors hover:border-line-strong hover:text-ink"
                     >
                       {s}
                     </button>
@@ -107,12 +108,12 @@ export function RecruiterChat() {
 
             {status === "submitted" && (
               <Bubble role="assistant">
-                <span className="text-slate-500">Thinking…</span>
+                <span className="text-ink-subtle">Thinking…</span>
               </Bubble>
             )}
 
             {error && (
-              <p className="rounded-lg border border-rose-500/40 bg-rose-500/10 px-3 py-2 text-xs text-rose-300">
+              <p className="rounded-lg border border-bad/30 bg-bad/8 px-3 py-2 text-xs text-bad">
                 The assistant is unavailable right now. Email{" "}
                 <a className="underline" href={`mailto:${profile.email}`}>
                   {profile.email}
@@ -127,20 +128,20 @@ export function RecruiterChat() {
               e.preventDefault();
               submit(input);
             }}
-            className="flex items-center gap-2 border-t border-slate-800 p-3"
+            className="flex items-center gap-2 border-t border-line p-3"
           >
             <input
               id="recruiter-chat-input"
               value={input}
               onChange={(e) => setInput(e.currentTarget.value)}
               placeholder="Ask a question…"
-              className="h-9 min-w-0 flex-1 rounded-lg border border-slate-800 bg-slate-950 px-3 text-sm text-slate-100 placeholder:text-slate-600"
+              className="h-9 min-w-0 flex-1 rounded-lg border border-line bg-canvas px-3 text-sm text-ink placeholder:text-ink-subtle"
             />
             <button
               type="submit"
               disabled={busy || !input.trim()}
               aria-label="Send message"
-              className="inline-flex size-9 shrink-0 items-center justify-center rounded-lg bg-accent text-slate-950 transition-colors hover:bg-cyan-300 disabled:opacity-40"
+              className="inline-flex size-9 shrink-0 items-center justify-center rounded-lg bg-brand text-white transition-colors hover:bg-brand-hover disabled:opacity-40"
             >
               <Send className="size-4" aria-hidden />
             </button>
@@ -163,8 +164,8 @@ function Bubble({
       className={cn(
         "max-w-[85%] rounded-lg px-3 py-2 text-sm leading-relaxed",
         role === "user"
-          ? "ml-auto bg-accent text-slate-950"
-          : "bg-slate-800/70 text-slate-200",
+          ? "ml-auto bg-brand text-white"
+          : "bg-canvas-alt text-ink",
       )}
     >
       {children}

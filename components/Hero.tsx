@@ -11,17 +11,17 @@ export function Hero() {
         HIPAA Certified · Available Immediately
       </Badge>
 
-      <h1 className="mt-6 max-w-3xl text-4xl font-semibold tracking-tight text-balance text-slate-50 sm:text-5xl">
+      <h1 className="mt-6 max-w-3xl text-4xl font-semibold tracking-tight text-balance text-ink sm:text-5xl">
         {profile.name}
       </h1>
-      <p className="mt-3 text-xl text-slate-300 sm:text-2xl">{profile.role}</p>
+      <p className="mt-3 text-xl text-ink-muted sm:text-2xl">{profile.role}</p>
 
-      <p className="mt-4 flex items-center gap-2 text-sm text-slate-400">
+      <p className="mt-4 flex items-center gap-2 text-sm text-ink-muted">
         <MapPin className="size-4 shrink-0" aria-hidden />
         {profile.location} · {profile.availability}
       </p>
 
-      <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-400">
+      <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">
         {profile.bio}
       </p>
 
@@ -29,12 +29,12 @@ export function Hero() {
         {metrics.map((metric) => (
           <CardSpotlight
             key={metric.label}
-            className="rounded-xl border border-slate-800 bg-slate-900/50 p-5 transition-colors hover:border-slate-700"
+            className="rounded-xl border border-line bg-surface p-5 transition-colors hover:border-line-strong"
           >
-            <div className="font-mono text-2xl font-semibold tracking-tight text-slate-50 tabular-nums">
+            <div className="font-mono text-2xl font-semibold tracking-tight text-ink tabular-nums">
               {metric.value}
             </div>
-            <div className="mt-1.5 text-sm text-slate-400">{metric.label}</div>
+            <div className="mt-1.5 text-sm text-ink-muted">{metric.label}</div>
           </CardSpotlight>
         ))}
       </div>

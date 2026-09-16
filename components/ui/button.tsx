@@ -1,9 +1,9 @@
 import { cn } from "@/lib/utils";
 
 const variants = {
-  primary: "bg-accent text-slate-950 hover:bg-cyan-300",
-  outline: "border border-slate-700 text-slate-200 hover:border-slate-500 hover:bg-slate-800/60",
-  ghost: "text-slate-300 hover:bg-slate-800/60 hover:text-slate-100",
+  primary: "bg-brand text-white hover:bg-brand-hover",
+  outline: "border border-line-strong text-ink hover:border-brand/40 hover:bg-brand-soft",
+  ghost: "text-ink-muted hover:bg-canvas-alt hover:text-ink",
 } as const;
 
 const sizes = {

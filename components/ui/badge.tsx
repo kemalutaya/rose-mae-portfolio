@@ -1,11 +1,11 @@
 import { cn } from "@/lib/utils";
 
 const variants = {
-  default: "border-slate-700 bg-slate-800/60 text-slate-300",
-  accent: "border-accent/40 bg-accent/10 text-accent",
-  positive: "border-emerald-500/40 bg-emerald-500/10 text-emerald-300",
-  caution: "border-amber-500/40 bg-amber-500/10 text-amber-300",
-  critical: "border-rose-500/40 bg-rose-500/10 text-rose-300",
+  default: "border-line-strong bg-canvas-alt text-ink-muted",
+  accent: "border-brand/30 bg-brand-soft text-brand",
+  positive: "border-good/30 bg-good/8 text-good",
+  caution: "border-warn/30 bg-warn/8 text-warn",
+  critical: "border-bad/30 bg-bad/8 text-bad",
 } as const;
 
 export function Badge({

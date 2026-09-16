@@ -25,7 +25,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       data-scroll-behavior="smooth"
       className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
-      <body className="font-sans flex min-h-full flex-col bg-slate-950">
+      <body className="font-sans flex min-h-full flex-col bg-canvas">
         {children}
       </body>
     </html>

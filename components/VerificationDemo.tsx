@@ -172,16 +172,16 @@ const coverageVariant = {
 } as const;
 
 const stateStyles = {
-  clear: { icon: CheckCircle2, ring: "border-emerald-500/30", text: "text-emerald-400" },
-  flagged: { icon: AlertTriangle, ring: "border-amber-500/30", text: "text-amber-400" },
-  critical: { icon: ShieldAlert, ring: "border-rose-500/30", text: "text-rose-400" },
+  clear: { icon: CheckCircle2, ring: "border-good/30", text: "text-good" },
+  flagged: { icon: AlertTriangle, ring: "border-warn/30", text: "text-warn" },
+  critical: { icon: ShieldAlert, ring: "border-bad/30", text: "text-bad" },
 } as const;
 
 function Field({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex flex-col gap-1">
-      <span className="text-[11px] uppercase tracking-wider text-slate-500">{label}</span>
-      <span className="font-mono text-sm tabular-nums text-slate-100">{value}</span>
+      <span className="text-[11px] uppercase tracking-wider text-ink-subtle">{label}</span>
+      <span className="font-mono text-sm tabular-nums text-ink">{value}</span>
     </div>
   );
 }
@@ -208,7 +208,7 @@ export function VerificationDemo() {
             <Card>
               <CardHeader>
                 <CardTitle>Today&apos;s Verification Queue</CardTitle>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-ink-muted">
                   {PATIENTS.length} patients checked before 8:00 AM
                 </p>
               </CardHeader>
@@ -223,21 +223,21 @@ export function VerificationDemo() {
                       aria-pressed={active}
                       className={cn(
                         "w-full rounded-lg border px-3 py-2.5 text-left transition-colors",
-                        "focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/70",
+                        "focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/40",
                         active
-                          ? "border-accent bg-accent/10"
-                          : "border-slate-800 hover:border-slate-700 hover:bg-slate-800/40",
+                          ? "border-brand bg-brand-soft"
+                          : "border-line hover:border-line-strong hover:bg-canvas-alt",
                       )}
                     >
                       <span
                         className={cn(
                           "block text-sm font-medium",
-                          active ? "text-slate-50" : "text-slate-200",
+                          active ? "text-ink" : "text-ink",
                         )}
                       >
                         {p.name}
                       </span>
-                      <span className="mt-0.5 block font-mono text-[11px] tabular-nums text-slate-500">
+                      <span className="mt-0.5 block font-mono text-[11px] tabular-nums text-ink-subtle">
                         DOB {p.dob} · {p.payer}
                       </span>
                     </button>
@@ -250,7 +250,7 @@ export function VerificationDemo() {
               <CardHeader className="flex-row items-start justify-between gap-3">
                 <div className="flex flex-col gap-1">
                   <CardTitle>{patient.name}</CardTitle>
-                  <p className="font-mono text-[11px] tabular-nums text-slate-500">
+                  <p className="font-mono text-[11px] tabular-nums text-ink-subtle">
                     Member ID {patient.memberId}
                   </p>
                 </div>
@@ -263,9 +263,9 @@ export function VerificationDemo() {
                   <Field label="Copay" value={patient.copay} />
                   <Field label="Deductible met" value={patient.deductible} />
                 </div>
-                <div className="flex flex-col gap-2 rounded-lg border border-slate-800 bg-slate-900/50 p-3">
+                <div className="flex flex-col gap-2 rounded-lg border border-line bg-surface p-3">
                   <div className="flex items-center gap-2">
-                    <span className="text-[11px] uppercase tracking-wider text-slate-500">
+                    <span className="text-[11px] uppercase tracking-wider text-ink-subtle">
                       Prior authorization
                     </span>
                     {patient.priorAuth ? (
@@ -274,11 +274,11 @@ export function VerificationDemo() {
                       <Badge variant="positive">Not required</Badge>
                     )}
                   </div>
-                  <span className="font-mono text-sm tabular-nums text-slate-100">
+                  <span className="font-mono text-sm tabular-nums text-ink">
                     {patient.priorAuth ?? "No CPT on this encounter requires authorization."}
                   </span>
                 </div>
-                <p className="text-sm leading-relaxed text-slate-400">{patient.note}</p>
+                <p className="text-sm leading-relaxed text-ink-muted">{patient.note}</p>
               </CardContent>
             </Card>
           </div>
@@ -289,7 +289,7 @@ export function VerificationDemo() {
             <CardHeader className="flex-row items-start justify-between gap-3">
               <div className="flex flex-col gap-1">
                 <CardTitle>Chart prep — Gordon Teasley, 9:15 AM follow-up</CardTitle>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-ink-muted">
                   {openItems > 0
                     ? `${openItems} of ${INITIAL_ITEMS.length} items need attention`
                     : `All ${INITIAL_ITEMS.length} items cleared — chart ready for the provider`}
@@ -299,9 +299,9 @@ export function VerificationDemo() {
                 type="button"
                 onClick={() => setResolved([])}
                 className={cn(
-                  "inline-flex items-center gap-1.5 rounded-md border border-slate-800 px-2.5 py-1.5",
-                  "text-xs text-slate-400 transition-colors hover:border-slate-700 hover:text-slate-200",
-                  "focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/70",
+                  "inline-flex items-center gap-1.5 rounded-md border border-line px-2.5 py-1.5",
+                  "text-xs text-ink-muted transition-colors hover:border-line-strong hover:text-ink",
+                  "focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/40",
                 )}
               >
                 <RotateCcw className="h-3.5 w-3.5" aria-hidden />
@@ -328,28 +328,28 @@ export function VerificationDemo() {
                       )
                     }
                     className={cn(
-                      "flex w-full items-start gap-3 rounded-lg border bg-slate-900/50 px-3 py-2.5 text-left transition-colors",
-                      "focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/70",
+                      "flex w-full items-start gap-3 rounded-lg border bg-surface px-3 py-2.5 text-left transition-colors",
+                      "focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/40",
                       style.ring,
                       toggleable
-                        ? "hover:border-slate-700 hover:bg-slate-800/40"
+                        ? "hover:border-line-strong hover:bg-canvas-alt"
                         : "cursor-default",
                     )}
                   >
                     <Icon className={cn("mt-0.5 h-4 w-4 shrink-0", style.text)} aria-hidden />
                     <span className="min-w-0 flex-1">
-                      <span className="block text-[11px] uppercase tracking-wider text-slate-500">
+                      <span className="block text-[11px] uppercase tracking-wider text-ink-subtle">
                         {item.category}
                       </span>
                       <span
                         className={cn(
                           "block text-sm font-medium",
-                          isResolved ? "text-slate-400 line-through" : "text-slate-100",
+                          isResolved ? "text-ink-muted line-through" : "text-ink",
                         )}
                       >
                         {item.label}
                       </span>
-                      <span className="mt-0.5 block font-mono text-[11px] tabular-nums text-slate-500">
+                      <span className="mt-0.5 block font-mono text-[11px] tabular-nums text-ink-subtle">
                         {item.detail}
                       </span>
                     </span>
@@ -368,7 +368,7 @@ export function VerificationDemo() {
                 );
               })}
               {openItems === 0 && (
-                <p className="mt-2 text-xs text-emerald-400">
+                <p className="mt-2 text-xs text-good">
                   Chart closed out. Provider walks into a visit with nothing pending.
                 </p>
               )}

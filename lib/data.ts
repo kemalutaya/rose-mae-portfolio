@@ -22,7 +22,7 @@ export interface ToolCategory {
 
 export const profile = {
   name: "Rose Mae M. Alipan",
-  role: "Healthcare Operations & Back-Office Specialist",
+  role: "Medical Virtual Assistant",
   location: "Davao City, Philippines",
   availability: "Aligned to U.S. Business Hours",
   email: "alipanrosemae@gmail.com",
@@ -34,7 +34,7 @@ export const profile = {
 } as const;
 
 export const metrics = [
-  { value: "7+ Years", label: "U.S. Healthcare Operations" },
+  { value: "7+ Years", label: "Supporting U.S. Practices" },
   { value: "100%", label: "HIPAA Compliant Workflows" },
   { value: "ICD-10 / CPT", label: "Coding & Claims Finalization" },
 ] as const;
