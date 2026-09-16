@@ -1,6 +1,6 @@
 "use client";
 
-import { Mail, MapPin } from "lucide-react";
+import { Check, Copy, Mail, MapPin } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { credentials, profile } from "@/lib/data";
@@ -17,10 +17,23 @@ function LinkedinIcon({ className }: { className?: string }) {
 export function ContactSection() {
   const [message, setMessage] = useState("");
   const [from, setFrom] = useState("");
+  const [copied, setCopied] = useState<boolean | null>(null);
+
+  const ready = from.trim() !== "" && message.trim() !== "";
 
   const mailto = `mailto:${profile.email}?subject=${encodeURIComponent(
     "Role enquiry via portfolio",
   )}&body=${encodeURIComponent(`${message}\n\n— ${from}`)}`;
+
+  async function copyDraft() {
+    const draft = `To: ${profile.email}\nSubject: Role enquiry via portfolio\n\n${message}\n\n— ${from}`;
+    try {
+      await navigator.clipboard.writeText(draft);
+      setCopied(true);
+    } catch {
+      setCopied(false);
+    }
+  }
 
   return (
     <div className="grid gap-8 md:grid-cols-2">
@@ -89,6 +102,8 @@ export function ContactSection() {
           window.location.href = mailto;
         }}
       >
+        {/* mailto silently does nothing when no mail client is registered,
+            so the copy path is offered alongside it rather than as a rescue. */}
         <label
           htmlFor="contact-from"
           className="text-[11px] tracking-wider text-ink-subtle uppercase"
@@ -120,11 +135,29 @@ export function ContactSection() {
           className="resize-y rounded-lg border border-line bg-canvas px-3 py-2 text-sm text-ink placeholder:text-ink-subtle"
         />
 
-        <Button type="submit" className="mt-2 self-start">
-          Send message
-        </Button>
-        <p className="text-xs text-ink-subtle">
-          Opens your email client with the message ready to send.
+        <div className="mt-2 flex flex-wrap items-center gap-2">
+          <Button type="submit">Open in email app</Button>
+          <Button
+            type="button"
+            variant="outline"
+            disabled={!ready}
+            onClick={copyDraft}
+          >
+            {copied === true ? (
+              <Check className="size-4" aria-hidden />
+            ) : (
+              <Copy className="size-4" aria-hidden />
+            )}
+            {copied === true ? "Copied" : "Copy message"}
+          </Button>
+        </div>
+
+        <p aria-live="polite" className="text-xs text-ink-subtle">
+          {copied === true
+            ? `Message copied. Send it to ${profile.email} from wherever you read email.`
+            : copied === false
+              ? `Copy failed — email ${profile.email} directly.`
+              : `Opens your mail app. No mail app? Copy the message and send it to ${profile.email}.`}
         </p>
       </form>
     </div>
