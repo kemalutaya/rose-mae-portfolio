@@ -6,6 +6,7 @@ import { ChevronDown } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { DarkPanel } from "@/components/DarkPanel";
 import { GlossaryTerm } from "@/components/GlossaryTerm";
+import { GrowthSparkline } from "@/components/GrowthSparkline";
 import {
   Disclosure,
   DisclosureTrigger,
@@ -57,7 +58,10 @@ export function ExperienceSection() {
 
   return (
     <div>
-      <YearsBadge />
+      <div className="flex flex-wrap items-end justify-between gap-6">
+        <YearsBadge />
+        <GrowthSparkline />
+      </div>
 
       <div className="relative mt-8 pl-6 sm:pl-8">
         <span

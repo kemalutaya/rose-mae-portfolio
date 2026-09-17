@@ -6,6 +6,7 @@ import { useRef } from "react";
 import { AnimatedNumber } from "@/components/motion-primitives/animated-number";
 import { InfiniteSlider } from "@/components/motion-primitives/infinite-slider";
 import { ProgressiveBlur } from "@/components/motion-primitives/progressive-blur";
+import { PulseLine } from "@/components/PulseLine";
 import { metrics, toolCategories } from "@/lib/data";
 
 const allTools = toolCategories.flatMap((category) =>
@@ -55,7 +56,9 @@ export function StatSection() {
         claims so providers get paid and patients don&apos;t wait.
       </p>
 
-      <div className="mt-10 grid gap-8 border-t border-line pt-8 sm:grid-cols-3">
+      <PulseLine />
+
+      <div className="mt-4 grid gap-8 border-t border-line pt-8 sm:grid-cols-3">
         {metrics.map((metric, i) => (
           <Stat key={metric.label} metric={metric} Icon={icons[i]} sub={subtext[i]} />
         ))}

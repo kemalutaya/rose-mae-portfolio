@@ -4,6 +4,7 @@ import { Check, Copy, Mail, MapPin } from "lucide-react";
 import { useState } from "react";
 import { AnimatedGroup } from "@/components/motion-primitives/animated-group";
 import { DarkPanel } from "@/components/DarkPanel";
+import { RadarPing } from "@/components/RadarPing";
 import { Button } from "@/components/ui/button";
 import { credentials, profile } from "@/lib/data";
 
@@ -60,13 +61,16 @@ export function ContactSection() {
     <div className="flex flex-col gap-8">
       <DarkPanel>
         <div className="flex flex-wrap items-center justify-between gap-4">
-          <div>
-            <p className="text-[11px] tracking-wider text-teal-accent uppercase">
-              Direct Line
-            </p>
-            <h3 className="mt-2 text-lg font-semibold text-on-panel">
-              Immediately available. No notice period to work around.
-            </h3>
+          <div className="flex items-center gap-4">
+            <RadarPing />
+            <div>
+              <p className="text-[11px] tracking-wider text-teal-accent uppercase">
+                Direct Line
+              </p>
+              <h3 className="mt-2 text-lg font-semibold text-on-panel">
+                Immediately available. No notice period to work around.
+              </h3>
+            </div>
           </div>
           <span className="flex items-center gap-2 rounded-full border border-teal-line bg-teal-panel-soft px-3 py-1.5 text-xs text-on-panel-muted">
             <span className="relative flex size-2">

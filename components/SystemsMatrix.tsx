@@ -4,6 +4,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { DarkPanel } from "@/components/DarkPanel";
+import { FlowDiagram } from "@/components/FlowDiagram";
 import {
   MorphingDialog,
   MorphingDialogTrigger,
@@ -67,7 +68,11 @@ export function SystemsMatrix() {
         ))}
       </Tabs>
 
-      <DarkPanel eyebrow="Daily Driver" title="Availity, first thing every morning">
+      <DarkPanel
+        eyebrow="Daily Driver"
+        title="Availity, first thing every morning"
+        graphic={<FlowDiagram />}
+      >
         Eligibility sweeps run through Availity before the first patient of
         the day is checked in: active coverage, copay, and deductible
         status confirmed while the front desk is still opening up.
