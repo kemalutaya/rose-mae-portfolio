@@ -26,17 +26,17 @@ export function ContactSection() {
 
   const ready = from.trim() !== "" && message.trim() !== "";
 
-  const draft = `To: ${profile.email}\nSubject: Role enquiry via portfolio\n\n${message}\n\n— ${from}`;
+  const draft = `To: ${profile.email}\nSubject: Role enquiry via portfolio\n\n${message}\n\nFrom: ${from}`;
   const mailto = `mailto:${profile.email}?subject=${encodeURIComponent(
     "Role enquiry via portfolio",
-  )}&body=${encodeURIComponent(`${message}\n\n— ${from}`)}`;
+  )}&body=${encodeURIComponent(`${message}\n\nFrom: ${from}`)}`;
 
   async function openEmailApp() {
     // mailto: silently no-ops when no mail client is registered, with no
     // error to catch and no reliable way to detect the failure after the
     // fact (a deferred check loses the click's transient user-activation,
     // which breaks clipboard writes too). So the draft is copied
-    // synchronously, inside the click itself, every time — a guaranteed
+    // synchronously, inside the click itself, every time: a guaranteed
     // fallback rather than one detected after guessing mailto failed.
     try {
       await navigator.clipboard.writeText(draft);
@@ -65,7 +65,7 @@ export function ContactSection() {
               Direct Line
             </p>
             <h3 className="mt-2 text-lg font-semibold text-on-panel">
-              Immediately available — no notice period to work around.
+              Immediately available. No notice period to work around.
             </h3>
           </div>
           <span className="flex items-center gap-2 rounded-full border border-teal-line bg-teal-panel-soft px-3 py-1.5 text-xs text-on-panel-muted">
@@ -130,7 +130,7 @@ export function ContactSection() {
             {credentials.map((c) => (
               <li key={c.label} className="text-sm text-ink">
                 {c.label}{" "}
-                <span className="text-ink-subtle">— {c.detail}</span>
+                <span className="text-ink-subtle">· {c.detail}</span>
               </li>
             ))}
           </ul>
@@ -205,7 +205,7 @@ export function ContactSection() {
               : copied === true
                 ? `Message copied. Send it to ${profile.email} from wherever you read email.`
                 : copied === false
-                  ? `Copy failed — email ${profile.email} directly.`
+                  ? `Copy failed. Email ${profile.email} directly.`
                   : `Copies the message and opens your mail app. No mail app? The message is already copied.`}
         </p>
       </form>

@@ -1,6 +1,6 @@
 const TICKS = Array.from({ length: 24 }, (_, i) => i * 15);
 
-/** Decorative dial — a "dialed in" metaphor for consistent process, not a
+/** Decorative dial, a "dialed in" metaphor for consistent process, not a
  *  literal control. Purely illustrative, drawn as inline SVG. */
 export function DialGraphic() {
   return (

@@ -1,4 +1,4 @@
-/** Blurred horizontal light beam marking the hero/content seam — blue-only,
+/** Blurred horizontal light beam marking the hero/content seam. Blue-only,
  *  not the green/blue/purple version this was modeled on. Fades the black
  *  hero down into the light canvas so the seam isn't a hard cut. */
 export function GradientDivider() {

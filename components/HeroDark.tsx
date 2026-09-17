@@ -10,7 +10,7 @@ export function HeroDark() {
         </h1>
         <p className="mt-3 text-base text-balance text-white/60 sm:text-lg">
           {profile.role} who keeps insurance eligibility, prior authorizations, and
-          claims moving — without letting a patient visit stall on paperwork.
+          claims moving, without letting a patient visit stall on paperwork.
         </p>
       </div>
 

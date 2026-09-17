@@ -6,8 +6,8 @@ import { Tilt } from "@/components/motion-primitives/tilt";
 const helpTags = ["Eligibility", "Prior Auth", "Claims"];
 
 /**
- * Placeholder art for the three collage cards — there are no real photos
- * yet. The monogram tile and the location-card illustration are drawn
+ * Placeholder art for the three collage cards, since there are no real
+ * photos yet. The monogram tile and the location-card illustration are drawn
  * entirely in CSS/SVG, in-theme, so the layout looks finished rather than
  * broken until real photos replace them.
  */

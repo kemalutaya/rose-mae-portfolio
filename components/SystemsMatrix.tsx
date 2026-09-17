@@ -69,7 +69,7 @@ export function SystemsMatrix() {
 
       <DarkPanel eyebrow="Daily Driver" title="Availity, first thing every morning">
         Eligibility sweeps run through Availity before the first patient of
-        the day is checked in — active coverage, copay, and deductible
+        the day is checked in: active coverage, copay, and deductible
         status confirmed while the front desk is still opening up.
       </DarkPanel>
     </div>

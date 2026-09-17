@@ -14,7 +14,7 @@ const allTools = toolCategories.flatMap((category) =>
 
 const icons = [Clock, ShieldCheck, FileText];
 const subtext = [
-  "Across insurance eligibility, prior auth, and claims — remote, healthcare, and support roles",
+  "Across insurance eligibility, prior auth, and claims: remote, healthcare, and support roles",
   "Every eligibility check and claim handled under an active HIPAA certification",
   "Diagnosis and procedure coding carried through to a finalized, submitted claim",
 ];
@@ -51,7 +51,7 @@ export function StatSection() {
       </h2>
       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-muted">
         Since 2009, I&apos;ve worked at the intersection of healthcare operations and
-        customer support — verifying coverage, clearing authorizations, and closing
+        customer support, verifying coverage, clearing authorizations, and closing
         claims so providers get paid and patients don&apos;t wait.
       </p>
 

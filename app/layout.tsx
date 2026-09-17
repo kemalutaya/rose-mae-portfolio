@@ -14,7 +14,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: `${profile.name} — ${profile.role}`,
+  title: `${profile.name} · ${profile.role}`,
   description: `${profile.bio} HIPAA certified, based in ${profile.location}, aligned to U.S. business hours.`,
 };
 

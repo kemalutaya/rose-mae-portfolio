@@ -36,12 +36,12 @@ function HighlightLine({ role, highlight }: { role: (typeof roles)[number]; high
         Applied{" "}
         <GlossaryTerm
           term="ICD-10"
-          definition="International Classification of Diseases, 10th revision — the code set used to document diagnoses on a claim."
+          definition="International Classification of Diseases, 10th revision. The code set used to document diagnoses on a claim."
         />{" "}
         and{" "}
         <GlossaryTerm
           term="CPT"
-          definition="Current Procedural Terminology — the code set used to document the procedures and services billed on a claim."
+          definition="Current Procedural Terminology. The code set used to document the procedures and services billed on a claim."
         />{" "}
         codes and finalized claims for submission
       </>

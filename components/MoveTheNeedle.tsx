@@ -17,8 +17,8 @@ export function MoveTheNeedle() {
       <div className="mt-10 grid items-center gap-10 md:grid-cols-2">
         <div>
           <p className="text-lg leading-relaxed text-ink">
-            I own eligibility and claims end to end — from the first verification
-            to the final submission — so nothing falls through before a provider
+            I own eligibility and claims end to end, from the first verification
+            to the final submission, so nothing falls through before a provider
             ever sees the patient.
           </p>
           <ul className="mt-6 flex flex-col gap-3">
