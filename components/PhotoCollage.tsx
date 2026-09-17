@@ -5,6 +5,57 @@ import { Tilt } from "@/components/motion-primitives/tilt";
 
 const helpTags = ["Eligibility", "Prior Auth", "Claims"];
 
+/** A winding route with milestone dots behind the monogram, a "path to
+ *  here" metaphor for the career-history card. Purely illustrative. */
+function CareerPathLines() {
+  return (
+    <svg
+      viewBox="0 0 200 250"
+      className="absolute inset-0 h-full w-full opacity-40"
+      role="presentation"
+    >
+      <path
+        d="M20 230 C 60 190, 10 150, 50 120 S 130 90, 100 60 S 170 30, 150 10"
+        fill="none"
+        stroke="white"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeDasharray="1 9"
+      />
+      {[
+        [20, 230],
+        [50, 120],
+        [100, 60],
+        [150, 10],
+      ].map(([cx, cy]) => (
+        <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="3.5" fill="white" fillOpacity="0.7" />
+      ))}
+    </svg>
+  );
+}
+
+/** Mt. Apo's silhouette over a simple skyline, standing in for a photo of
+ *  Davao City on the location card. Purely illustrative. */
+function DavaoSkyline() {
+  return (
+    <svg
+      viewBox="0 0 200 200"
+      className="absolute inset-x-0 bottom-0 h-2/3 w-full opacity-35"
+      preserveAspectRatio="xMidYMax slice"
+      role="presentation"
+    >
+      <path
+        d="M0 170 L55 90 L80 130 L110 55 L150 170 Z"
+        fill="white"
+        fillOpacity="0.55"
+      />
+      <rect x="10" y="150" width="18" height="30" fill="white" fillOpacity="0.3" />
+      <rect x="150" y="130" width="22" height="50" fill="white" fillOpacity="0.3" />
+      <rect x="175" y="150" width="16" height="30" fill="white" fillOpacity="0.3" />
+    </svg>
+  );
+}
+
 /**
  * Placeholder art for the three collage cards, since there are no real
  * photos yet. The monogram tile and the location-card illustration are drawn
@@ -53,13 +104,14 @@ export function PhotoCollage() {
             How I got here
           </p>
           <div
-            className="flex aspect-[4/5] items-center justify-center"
+            className="relative flex aspect-[4/5] items-center justify-center overflow-hidden"
             style={{
               background:
                 "radial-gradient(circle at 30% 20%, var(--color-teal-accent), var(--color-teal) 55%, var(--color-brand-hover) 100%)",
             }}
           >
-            <span className="font-mono text-5xl font-bold text-white/90">
+            <CareerPathLines />
+            <span className="relative font-mono text-5xl font-bold text-white/90">
               RA
             </span>
           </div>
@@ -76,13 +128,14 @@ export function PhotoCollage() {
             Life off-screen
           </p>
           <div
-            className="flex aspect-square items-center justify-center"
+            className="relative flex aspect-square items-center justify-center overflow-hidden"
             style={{
               background:
                 "linear-gradient(160deg, var(--color-brand) 0%, var(--color-brand-hover) 100%)",
             }}
           >
-            <MapPin className="size-8 text-teal-accent" aria-hidden />
+            <DavaoSkyline />
+            <MapPin className="relative size-8 text-teal-accent" aria-hidden />
           </div>
           <p className="px-4 py-2 text-[11px] text-white/60">Davao City, PH</p>
         </div>

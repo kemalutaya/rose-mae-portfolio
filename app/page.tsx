@@ -6,8 +6,14 @@ import { HeroDark } from "@/components/HeroDark";
 import { MoveTheNeedle } from "@/components/MoveTheNeedle";
 import { StatSection } from "@/components/StatSection";
 import { SystemsMatrix } from "@/components/SystemsMatrix";
+import { InView } from "@/components/motion-primitives/in-view";
 import { ScrollProgress } from "@/components/motion-primitives/scroll-progress";
 import { profile } from "@/lib/data";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0 },
+};
 
 function Section({
   id,
@@ -24,13 +30,15 @@ function Section({
 }) {
   return (
     <section id={id} className="mx-auto w-full max-w-6xl scroll-mt-20 px-4 py-14 sm:px-6">
-      <p className="text-[11px] tracking-wider text-brand uppercase">{eyebrow}</p>
-      <h2 className="mt-2 text-2xl font-semibold tracking-tight text-balance text-ink">
-        {title}
-      </h2>
-      <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-muted">
-        {description}
-      </p>
+      <InView variants={fadeUp} viewOptions={{ once: true, amount: 0.4 }}>
+        <p className="text-[11px] tracking-wider text-brand uppercase">{eyebrow}</p>
+        <h2 className="mt-2 text-2xl font-semibold tracking-tight text-balance text-ink">
+          {title}
+        </h2>
+        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-muted">
+          {description}
+        </p>
+      </InView>
       <div className="mt-8">{children}</div>
     </section>
   );
