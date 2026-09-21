@@ -35,7 +35,7 @@ export const profile = {
 
 export const metrics = [
   { number: 7, suffix: "+", label: "Years Supporting U.S. Practices" },
-  { text: "HIPAA", label: "Certified (Saiber)" },
+  { number: 100, suffix: "%", label: "HIPAA Compliant Workflows" },
   { text: "ICD-10 / CPT", label: "Coding & Claims Finalization" },
 ] as const;
 
