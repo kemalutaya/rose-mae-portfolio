@@ -1,8 +1,7 @@
 import { ContactSection } from "@/components/ContactSection";
 import { ExperienceSection } from "@/components/ExperienceSection";
-import { GradientDivider } from "@/components/GradientDivider";
 import { Header } from "@/components/Header";
-import { HeroDark } from "@/components/HeroDark";
+import { HeroLight } from "@/components/HeroLight";
 import { MoveTheNeedle } from "@/components/MoveTheNeedle";
 import { StatSection } from "@/components/StatSection";
 import { SystemsMatrix } from "@/components/SystemsMatrix";
@@ -50,8 +49,7 @@ export default function Page() {
       <ScrollProgress className="fixed inset-x-0 top-0 z-50 bg-teal-accent" />
       <Header />
       <main className="flex-1 divide-y divide-line">
-        <HeroDark />
-        <GradientDivider />
+        <HeroLight />
         <StatSection />
         <MoveTheNeedle />
 
