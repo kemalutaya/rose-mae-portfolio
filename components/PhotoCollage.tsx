@@ -1,6 +1,7 @@
 "use client";
 
 import { MapPin } from "lucide-react";
+import Image from "next/image";
 import { Tilt } from "@/components/motion-primitives/tilt";
 
 const helpTags = ["Eligibility", "Prior Auth", "Claims"];
@@ -110,10 +111,21 @@ export function PhotoCollage() {
                 "radial-gradient(circle at 30% 20%, var(--color-teal-accent), var(--color-teal) 55%, var(--color-brand-hover) 100%)",
             }}
           >
+            <Image
+              src="/rose-mae.jpg"
+              alt="Rose Mae Alipan"
+              fill
+              sizes="220px"
+              className="object-cover mix-blend-luminosity opacity-90"
+            />
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "radial-gradient(circle at 30% 20%, transparent 35%, var(--color-brand-hover) 105%)",
+              }}
+            />
             <CareerPathLines />
-            <span className="relative font-mono text-5xl font-bold text-white/90">
-              RA
-            </span>
           </div>
         </div>
       </Tilt>

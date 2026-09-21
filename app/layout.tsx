@@ -13,9 +13,15 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
+const description = `${profile.bio} HIPAA certified, based in ${profile.location}, aligned to U.S. business hours.`;
+const title = `${profile.name} · ${profile.role}`;
+
 export const metadata: Metadata = {
-  title: `${profile.name} · ${profile.role}`,
-  description: `${profile.bio} HIPAA certified, based in ${profile.location}, aligned to U.S. business hours.`,
+  metadataBase: new URL("https://rose-mae-portfolio.vercel.app"),
+  title,
+  description,
+  openGraph: { title, description, type: "website", images: ["/rose-mae.jpg"] },
+  twitter: { card: "summary_large_image", title, description, images: ["/rose-mae.jpg"] },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
